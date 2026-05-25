@@ -1,24 +1,35 @@
-[
-    {
-        "name": "e",
+{
+    "Ade": {
+        "password": "Ola",
+        "balance": 5000.0,
+        "transactions": [
+            "Deposit of 2000.0 on 2026-05-25 17:14:05",
+            "Deposit of 5000.0 on 2026-05-25 17:18:23",
+            "Withdrawal of 2000.0 on 2026-05-25 17:42:00",
+            "Withdrawal of 2000.0 on 2026-05-25 17:44:06",
+            "Withdrawal of 1000.0 on 2026-05-25 17:45:51",
+            "Withdrawal of 1000.0 on 2026-05-25 18:02:05",
+            "Deposit of 2000.0 on 2026-05-25 18:24:47",
+            "Deposit of 2000.0 on 2026-05-25 18:29:20"
+        ]
+    },
+    "Adeoye": {
+        "password": "Olaoye",
         "balance": 0,
         "transactions": []
     },
-    {
-        "name": "Ade",
-        "balance": 5000.0,
+    "Muj": {
+        "password": "Ola",
+        "balance": 3000.0,
         "transactions": [
-            "Deposit of 2000.0 at 2026-05-22 17:02:13",
-            "Withdrawal of 2.0 at 2026-05-22 17:02:25",
-            "Deposit of 5000.0 on 2026-05-22 17:07:37"
+            "Deposit of 3000.0 on 2026-05-25 17:26:20"
         ]
     },
-    {
-        "name": "Ola",
-        "balance": 1900.0,
+    "Mujaheed": {
+        "password": "Oladele",
+        "balance": 4000.0,
         "transactions": [
-            "Deposit of 2000.0 at 2026-05-22 17:03:29",
-            "Withdrawal of 100.0 at 2026-05-22 17:03:33"
+            "Deposit of 4000.0 on 2026-05-25 18:37:22"
         ]
     }
-]
+}
