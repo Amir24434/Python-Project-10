@@ -18,6 +18,8 @@ Author: Abdulsobur Adegboyega
 from datetime import datetime
 import os
 import json
+import hashlib
+
 
 
 class BankSystem:
@@ -72,7 +74,7 @@ class BankSystem:
         """
 
         self.name = name
-        self.password = password
+        self.password = hash_password(password)
 
         # Load existing data
         with open("accounts.json", "r") as file:
@@ -80,7 +82,7 @@ class BankSystem:
 
         # Create new account structure
         data[name] = {
-            "password": password,
+            "password": self.password,
             "balance": self.balance,
             "transactions": self.trans_hist,
         }
@@ -102,7 +104,7 @@ class BankSystem:
         """
 
         self.name = name
-        self.password = password
+        self.password = hash_password(password)
 
         # Load account data
         with open("accounts.json", "r") as file:
@@ -218,6 +220,49 @@ class BankSystem:
         # Print transaction list
         for index, transaction in enumerate(trans_data, start=1):
             print(f"{index}. {transaction}")
+            
+            
+    def transfer(self, recipient, amount):
+        """
+        Transfer money from current user to another user.
+        """
+
+        with open("accounts.json", "r") as file:
+            data = json.load(file)
+
+        # Check recipient exists and is not sender
+        if recipient not in data or recipient == self.name:
+            print("Recipient account does not exist!")
+            return
+
+        # Check balance
+        if data[self.name]["balance"] < amount:
+            print("Insufficient funds for transfer!")
+            return
+
+        # Timestamp
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        # Deduct and add balances
+        data[self.name]["balance"] -= amount
+        data[recipient]["balance"] += amount
+
+        # Sender transaction
+        sender_tx = f"Transfer of {amount} to {recipient} on {timestamp}"
+        data[self.name]["transactions"].append(sender_tx)
+
+        # Recipient transaction
+        recipient_tx = f"Transfer of {amount} from {self.name} on {timestamp}"
+        data[recipient]["transactions"].append(recipient_tx)
+
+        # Save changes
+        with open("accounts.json", "w") as file:
+            json.dump(data, file, indent=4)
+
+        print("Transfer successful!")
+        
+    
+    
 
 
 # Create bank system object
@@ -240,6 +285,12 @@ def new_choice():
         exit()
 
 
+def hash_password(password):
+    """
+    Convert password into a hashed string.
+    """
+    return hashlib.sha256(password.encode()).hexdigest()
+
 def perform_task():
     """
     Display banking options and perform selected operations.
@@ -250,9 +301,10 @@ def perform_task():
     choice = input(
         "1. Deposit\n"
         "2. Withdraw\n"
-        "3. View Balance\n"
-        "4. View Transaction History\n"
-        "5. Exit\n"
+        "3. Transfer\n"
+        "4. View Balance\n"
+        "5. View Transaction History\n"
+        "6. Exit\n"
         "Enter your choice: "
     )
 
@@ -275,9 +327,25 @@ def perform_task():
         bank.withdraw(amount)
 
         new_choice()
+        
+    # Transfer option
+    elif choice == "3" or choice == "Transfer".lower():
+
+        recipient = input("Enter the recipient's username: ")
+
+        amount = float(input("Enter the amount to transfer: "))
+
+        bank.transfer(recipient, amount)
+        if True:
+            print(f"Transferred ${amount} to {recipient} successfully!")
+            
+        else:
+            print("Transfer failed!")
+
+        new_choice()
 
     # View balance option
-    elif choice == "3" or choice == "View Balance".lower():
+    elif choice == "4" or choice == "View Balance".lower():
 
         balance = bank.check_balance()
 
@@ -286,7 +354,7 @@ def perform_task():
         new_choice()
 
     # View transaction history option
-    elif choice == "4" or choice == "View Transaction History".lower():
+    elif choice == "5" or choice == "View Transaction History".lower():
 
         print("Transaction History:")
 
@@ -295,7 +363,7 @@ def perform_task():
         new_choice()
 
     # Exit option
-    elif choice == "5" or choice == "Exit".lower():
+    elif choice == "6" or choice == "Exit".lower():
 
         print("Thank you for using our banking system. Goodbye!")
 

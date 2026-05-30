@@ -1,35 +1,23 @@
 {
-    "Ade": {
-        "password": "Ola",
-        "balance": 5000.0,
-        "transactions": [
-            "Deposit of 2000.0 on 2026-05-25 17:14:05",
-            "Deposit of 5000.0 on 2026-05-25 17:18:23",
-            "Withdrawal of 2000.0 on 2026-05-25 17:42:00",
-            "Withdrawal of 2000.0 on 2026-05-25 17:44:06",
-            "Withdrawal of 1000.0 on 2026-05-25 17:45:51",
-            "Withdrawal of 1000.0 on 2026-05-25 18:02:05",
-            "Deposit of 2000.0 on 2026-05-25 18:24:47",
-            "Deposit of 2000.0 on 2026-05-25 18:29:20"
-        ]
-    },
-    "Adeoye": {
-        "password": "Olaoye",
-        "balance": 0,
-        "transactions": []
-    },
-    "Muj": {
-        "password": "Ola",
-        "balance": 3000.0,
-        "transactions": [
-            "Deposit of 3000.0 on 2026-05-25 17:26:20"
-        ]
-    },
-    "Mujaheed": {
-        "password": "Oladele",
+    "Aden": {
+        "password": "2d13d1c0d678554e84e6651f5b2f90103f436ca2cdcd92d0a6e8e3976cc69227",
         "balance": 4000.0,
         "transactions": [
-            "Deposit of 4000.0 on 2026-05-25 18:37:22"
+            "Transfer of 2000.0 to Silas on 2026-05-30 15:22:17",
+            "Transfer of 2000.0 from Silas on 2026-05-30 15:25:02",
+            "Transfer of 2000.0 to Silas on 2026-05-30 15:26:17",
+            "Transfer of 2000.0 from Silas on 2026-05-30 15:28:38"
+        ]
+    },
+    "Silas": {
+        "password": "84d610d6acf405ce9b77300ae22ba56b3d151dbd2d932cf0a0aea9172a58497e",
+        "balance": 5000.0,
+        "transactions": [
+            "Transfer of 2000.0 from Aden on 2026-05-30 15:22:17",
+            "Withdrawal of 1000.0 on 2026-05-30 15:24:53",
+            "Transfer of 2000.0 to Aden on 2026-05-30 15:25:02",
+            "Transfer of 2000.0 from Aden on 2026-05-30 15:26:17",
+            "Transfer of 2000.0 to Aden on 2026-05-30 15:28:38"
         ]
     }
 }
