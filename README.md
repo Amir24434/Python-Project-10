@@ -1,6 +1,6 @@
 Banking System (OOP)
 
-A simple banking system built using Python classes.
+A simple banking system built using Python.
 
 ## Features
 - Create account
